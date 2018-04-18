@@ -4,14 +4,13 @@ var CountryView = function(){
 
 CountryView.prototype.addCountry = function(country) {
   this.countries.push(country);
-  debugger;
   return this.countries;
 }
 
 CountryView.prototype.populateDropDown = function(){
-  const select = document.querySelector('#country-list');
-  const addedCountry = document.createElement('option');
+  const select = document.getElementById('country-list');
   this.countries.forEach(function(country){
+    const addedCountry = document.createElement('option');
     addedCountry.innerText = country.name;
     select.appendChild(addedCountry);
   })
