@@ -1,21 +1,22 @@
 #main-map {
-  height: 100%;
-  width: 100%;
-}
-
-.map-container {
   float: right;
-  width:50%;
-  height:100%;
+  height: 433px;
+  width: 835px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
 }
-
 
 .list-container {
-  width: 35%;
+  float:left;
+  margin: 0;
+  width: 410px;
   height:433px;
   background-color: grey;
+  border-width: 1px;
+  border-style: solid;
+  border-color: red;
 }
-
 
 .countries-container {
   width: 100%
