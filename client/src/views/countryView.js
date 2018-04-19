@@ -3,13 +3,13 @@ var CountryView = function(){
   this.bucket = [];
   this.coordsArray = [];
   this.markers = [];
-  const container = document.getElementById('main-map');
-  const center = {lat: 33, lng: 65};
-  const zoom = 3;
-  this.googleMap = new google.maps.Map(container, {
-    center: coords,
-    zoom: zoom
-  })
+  // const container = document.getElementById('main-map');
+  // const center = {lat: 33, lng: 65};
+  // const zoom = 3;
+  // this.googleMap = new google.maps.Map(container, {
+  //   center: coords,
+  //   zoom: zoom
+  // })
 }
 
 CountryView.prototype.addCountry = function(country) {
@@ -52,31 +52,10 @@ CountryView.prototype.getCoords = function() {
     }
     this.coordsArray.push(coords);
   }
-  // return this.coordsArray;
-  debugger;
-  this.beforeAddMarker();
-
+  console.log(this.coordsArray);
+  // debugger;
+  return this.coordsArray;
 }
-
-CountryView.prototype.beforeAddMarker = function(){
-  for(let coords of this.coordsArray){
-    this.addMarker(coords);
-  }
-}
-
-
-CountryView.prototype.addMarker = function(coords){
-  const marker = new google.maps.Marker({
-    position: coords,
-    map: this.googleMap
-  })
-  this.markers.push(marker);
-};
-
-CountryView.prototype.callMap = function(){
-  return this.googleMap;
-}
-
 
 
 module.exports = CountryView;

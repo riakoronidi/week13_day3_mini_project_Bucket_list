@@ -5,7 +5,6 @@ const countryView = new CountryView();
 const countryRequest = new Request('https://restcountries.eu/rest/v2/all');
 const request = new Request('http://localhost:3000/api/bucketlist');
 
-
 const getCountryRequestComplete = function(allCountries){
   allCountries.forEach(function(country){
     countryView.addCountry(country);
@@ -75,11 +74,18 @@ const createButtonClicked = function(event){
 const getCountryAddToMap = function(){
   console.log("Map!");
   const container = document.getElementById('main-map');
-  // const center = {lat: 33, lng: 65};
-  const center = countryView.getCoords();
+  const center = {lat: 33, lng: 65};
   const zoom = 3;
 
-  const map = countryView.callMap();
+  // const map = countryView.callMap();
+  const map = new MapWrapper(container, center, zoom);
+
+  const coordsArray = countryView.getCoords();
+  for(let coords of coordsArray){
+    const center = coords;
+    map.addMarker(center);
+  }
+
 
 }
 
