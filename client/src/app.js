@@ -64,23 +64,22 @@ const createButtonClicked = function(event){
 //   const countySelect = document.querySelector("#country-list");
 //   const countySelectedValue = countySelect.options[countySelect.selectedIndex].value;
 //
-  // const countryToSend = {
-  //   name: countySelectedValue
-  // };
-  // //add it to the bucket array and display in the browser
-  // countryView.addCountryToBucketList(countryToSend);
+// const countryToSend = {
+//   name: countySelectedValue
+// };
+// //add it to the bucket array and display in the browser
+// countryView.addCountryToBucketList(countryToSend);
 //
 //   // request.post(createRequestComplete, countryToSend);
 // }
 const getCountryAddToMap = function(){
   console.log("Map!");
   const container = document.getElementById('main-map');
-  const center = {lat: 55.8571, lng: -4.2445};
+  // const center = {lat: 33, lng: 65};
+  const center = countryView.getCoords();
   const zoom = 3;
 
-  const map = new MapWrapper(container, center, zoom);
-
-
+  const map = countryView.createMap(container, center, zoom)
 
 }
 

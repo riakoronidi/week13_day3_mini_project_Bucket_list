@@ -6,5 +6,12 @@ const MapWrapper = function(container, coords, zoom){
   // this.markers = [];
 };
 
+// MapWrapper.prototype.addMarker = function(coords){
+//   const marker = new google.maps.Marker({
+//     position: coords,
+//     map: this.googleMap
+//   })
+//   this.markers.push(marker);
+// };
 
 module.exports = MapWrapper;
