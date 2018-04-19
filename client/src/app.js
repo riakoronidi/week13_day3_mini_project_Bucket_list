@@ -108,16 +108,12 @@ deleteButton.addEventListener("click", deleteButtonClicked);
 
   // debugger;
 
-<<<<<<< HEAD
-//pass that selected country in the bucket-list
-// request.get(getCountryRequestFromBucketListComplete);
-=======
+
   //pass that selected country in the map
 }
 
 const app = function(){
   request.get(getCountryAddToMap);
->>>>>>> 937ced6aba6bcf2058f2c83339c2a5b574633682
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
