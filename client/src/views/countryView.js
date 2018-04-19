@@ -13,7 +13,7 @@ CountryView.prototype.populateDropDown = function(){
   this.countries.forEach(function(country){
     const addedCountry = document.createElement('option');
     addedCountry.innerText = country.name;
-    select.appendChild(addedCountry);    
+    select.appendChild(addedCountry);
   })
 }
 
