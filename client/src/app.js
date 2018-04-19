@@ -75,9 +75,8 @@ const getCountryAddToMap = function(){
   console.log("Map!");
   const container = document.getElementById('main-map');
   const center = {lat: 33, lng: 65};
-  const zoom = 3;
+  const zoom = 2;
 
-  // const map = countryView.callMap();
   const map = new MapWrapper(container, center, zoom);
 
   const coordsArray = countryView.getCoords();
@@ -113,8 +112,6 @@ deleteButton.addEventListener("click", deleteButtonClicked);
 
   // debugger;
 
-
-  //pass that selected country in the map
 }
 
 const app = function(){
