@@ -11,27 +11,57 @@ const getCountryRequestComplete = function(allCountries){
   countryView.populateDropDown();
 }
 
-const createButtonClicked = function(event){
-  event.preventDefault();
-  console.log("Submit button clicked");
-
-  // take the selected country from drop down list
-  const countySelect = document.querySelector("#country-list");
-  const countySelectedValue = countySelect.options[countySelect.selectedIndex].value;
-
-  const countryToSend = {
-    name: countySelectedValue
-  };
-  //add it to the bucket array and display in the browser
-  countryView.addCountryToBucketList(countryToSend);
-
-  // request.post(createRequestComplete, countryToSend);
+const getBucketRequestComplete = function(bucketList){
+  const ul = document.getElementById("countries");
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+  bucketList.forEach(function(country){
+    countryView.addCountryToBucketList(country);
+  })
 }
 
+const addCountryRequestComplete = function(allCountries){
+  const countrySelect = document.querySelector("#country-list");
+  const countrySelectedValue = countrySelect.options[countrySelect.selectedIndex].value;
+  allCountries.forEach(function(country){
+    if (country.name === countrySelectedValue){
+      const countrySelectedObject = country;
+      request.post(recallBucketList, countrySelectedObject);
+    }
+  });
+}
 
+const recallBucketList = function(){
+  request.get(getBucketRequestComplete);
+}
+
+const createButtonClicked = function(event){
+  event.preventDefault();
+  countryRequest.get(addCountryRequestComplete);
+}
+
+// const createButtonClicked = function(event){
+//   event.preventDefault();
+//   console.log("Submit button clicked");
+//
+//   // take the selected country from drop down list
+//   const countySelect = document.querySelector("#country-list");
+//   const countySelectedValue = countySelect.options[countySelect.selectedIndex].value;
+//
+  // const countryToSend = {
+  //   name: countySelectedValue
+  // };
+  // //add it to the bucket array and display in the browser
+  // countryView.addCountryToBucketList(countryToSend);
+//
+//   // request.post(createRequestComplete, countryToSend);
+// }
 
 const appStart= function(){
+  // debugger;
   countryRequest.get(getCountryRequestComplete);
+  request.get(getBucketRequestComplete);
 
   //click button and once clicked take the selected country from drop down list
   const createCountryButton = document.querySelector("#submit-country");
