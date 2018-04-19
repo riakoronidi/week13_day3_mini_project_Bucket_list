@@ -24,12 +24,25 @@ const getBucketRequestComplete = function(bucketList){
 const addCountryRequestComplete = function(allCountries){
   const countrySelect = document.querySelector("#country-list");
   const countrySelectedValue = countrySelect.options[countrySelect.selectedIndex].value;
-  allCountries.forEach(function(country){
-    if (country.name === countrySelectedValue){
-      const countrySelectedObject = country;
-      request.post(recallBucketList, countrySelectedObject);
-    }
-  });
+  const ul = document.getElementById("countries");
+  const listItems = ul.getElementsByTagName("li");
+  const listItemsNames = [];
+
+  for (let i = 0; i < listItems.length; ++i) {
+    listItemsNames.push(listItems[i].textContent);
+  }
+  const duplicateBoolean = _.includes(listItemsNames, countrySelectedValue);
+  if (duplicateBoolean === false) {
+    allCountries.forEach(function(country){
+      if (country.name === countrySelectedValue){
+        const countrySelectedObject = country;
+        request.post(recallBucketList, countrySelectedObject);
+      }
+    });
+  }
+  else {
+    console.log("Already in list!");
+  }
 }
 
 const recallBucketList = function(){
