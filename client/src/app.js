@@ -79,7 +79,7 @@ const getCountryAddToMap = function(){
   const center = countryView.getCoords();
   const zoom = 3;
 
-  const map = countryView.createMap(container, center, zoom)
+  const map = countryView.callMap();
 
 }
 
