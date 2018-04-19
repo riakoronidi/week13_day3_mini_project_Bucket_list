@@ -13,7 +13,7 @@ CountryView.prototype.populateDropDown = function(){
   this.countries.forEach(function(country){
     const addedCountry = document.createElement('option');
     addedCountry.innerText = country.name;
-    select.appendChild(addedCountry);    
+    select.appendChild(addedCountry);
   })
 }
 
@@ -26,7 +26,6 @@ CountryView.prototype.clear = function(country) {
 CountryView.prototype.addCountryToBucketList = function(country) {
   this.bucket.push(country);
   this.populateList(country);
-  // debugger;
 }
 
 CountryView.prototype.populateList = function(country){
