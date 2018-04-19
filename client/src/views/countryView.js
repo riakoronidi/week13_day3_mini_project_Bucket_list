@@ -1,5 +1,6 @@
 var CountryView = function(){
   this.countries = [];
+  this.bucket = [];
 }
 
 CountryView.prototype.addCountry = function(country) {
@@ -12,9 +13,8 @@ CountryView.prototype.populateDropDown = function(){
   this.countries.forEach(function(country){
     const addedCountry = document.createElement('option');
     addedCountry.innerText = country.name;
-    select.appendChild(addedCountry);
+    select.appendChild(addedCountry);    
   })
-
 }
 
 CountryView.prototype.clear = function(country) {
@@ -23,12 +23,16 @@ CountryView.prototype.clear = function(country) {
   ul.innerHTML = '';
 }
 
+CountryView.prototype.addCountryToBucketList = function(country) {
+  this.bucket.push(country);
+  this.populateList(country);
+  // debugger;
+}
+
 CountryView.prototype.populateList = function(country){
     const ul = document.querySelector('#countries');
     const li = document.createElement('li');
-    const text = document.createElement('p');
-    text.innerText = `${country.name}`;
-    li.appendChild(text);
+    li.innerText = `${country.name}`;
     ul.appendChild(li);
 }
 
